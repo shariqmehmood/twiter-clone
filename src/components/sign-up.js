@@ -8,7 +8,7 @@ import {GlobalContext} from "../context/context"
 
 function SignUp() {
     const {state,dispatch}= useContext(GlobalContext);
- 
+    const history = useHistory(); 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [errMsg, setErrMsg] = useState('');
@@ -25,6 +25,7 @@ function SignUp() {
                 let { user } = await createUserWithEmailAndPassword(auth, email, pass);
                 let dataRef = doc(db, 'users', user.uid)
                 
+                history.push('./Signin')
                 await setDoc(dataRef, {
                     email: user.email,
                     uid: user.uid,
@@ -52,7 +53,7 @@ function SignUp() {
  <input type="email" className="input-box" onChange={(event)=>{setEmail(event.target.value)}} placeholder="Your-Email"></input>
  <input type="password" className="input-box" onChange={(event)=>{setPass(event.target.value)}} placeholder="Your-Password"></input>
  <button className="sing-btn"onClick={ register}>Sign Up</button>
-                  <Link to="/">Sign In</Link>
+                
              {errMsg ? <p>{errMsg}</p> : null}
         </div>
     )

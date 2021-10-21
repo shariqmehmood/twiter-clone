@@ -12,7 +12,7 @@ function SignIn() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const History={useHistory};    
+      
     const history = useHistory(); 
 
     

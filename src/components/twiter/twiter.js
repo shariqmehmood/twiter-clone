@@ -28,14 +28,13 @@ function Twiter() {
         let gettweet = collection(db, 'text');
        
         let alltweet = await getDocs(gettweet);
+        let mytweetClone = mytweet.slice(0);
         alltweet.forEach((doc) => {
-            // console.log( doc.data());
-            let mytweetClone = mytweet.slice(0);
             mytweetClone.push(doc.data());
-            setMytweet(mytweetClone);
-
-            
+        
         });
+        setMytweet(mytweetClone);
+       
     }, [])
      
 
